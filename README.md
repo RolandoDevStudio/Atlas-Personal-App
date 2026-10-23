@@ -10,7 +10,7 @@ Crear una plataforma visual e interactiva de memoria autobiográfica y autoconoc
 
 ## Prototipo
 
-Archivo `atlas_personal_prototipo.html`. Abrirlo en un navegador moderno sin instalación ni conexión a Internet. Funciona en ordenador y móvil. La interfaz incluye:
+Archivo `index.html`. Abrirlo en un navegador moderno sin instalación ni conexión a Internet. Funciona en ordenador y móvil. La interfaz incluye:
 
 - Inicio con resumen de la historia, registros recientes y una coincidencia temática.
 - Línea de vida filtrable por áreas, con acceso a testimonios completos y fuentes.
