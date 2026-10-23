@@ -1,0 +1,19 @@
+{
+  "name": "Atlas Personal",
+  "short_name": "Atlas",
+  "description": "Prototipo de mapa de vida y autoconocimiento con datos ficticios.",
+  "lang": "es-MX",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f7f3",
+  "theme_color": "#1e6558",
+  "icons": [
+    {
+      "src": "atlas-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
