@@ -113,11 +113,11 @@ const atlasBBaseHome=home,atlasBBaseDiary=diary,atlasBBaseLibrary=library;
 function atlasBChartSwitch(){return '<div class="atlas-b-toolbar"><button class="btn secondary" aria-pressed="'+atlasB.showCharts+'" onclick="atlasB.showCharts=!atlasB.showCharts;render()">'+(atlasB.showCharts?'Ocultar gráficas':'Mostrar gráficas opcionales')+'</button></div><p class="atlas-b-inline-note">Son registros de ejemplo, no medidas clínicas. Mostrar gráficas es optativo.</p>';}
 function atlasBHome(){
  const base=atlasBBaseHome();
- return atlasBChartSwitch()+'<div class="'+(atlasB.showCharts?'':'atlas-b-graph-off')+'">'+base+'</div>'+(!atlasB.showCharts?headings('RECUERDOS FICTICIOS','Explora los registros','Puedes registrar o buscar sin activar gráficas.')+'<div class="atlas-b-toolbar"><button class="btn" onclick="navTo(\'timeline\')">Ver línea de vida</button><button class="btn secondary" onclick="openAdd()">Solo registrar</button></div>':'');
+ return atlasBChartSwitch() + base;
 }
 function atlasBDiary(){
  const base=atlasBBaseDiary();
- return atlasBChartSwitch()+'<div class="'+(atlasB.showCharts?'':'atlas-b-graph-off')+'">'+base+'</div>'+(!atlasB.showCharts?headings('REGISTROS FICTICIOS','Tu diario de ejemplo','Las gráficas están ocultas; el registro sigue disponible.')+'<div class="atlas-b-toolbar"><button class="btn" onclick="openAdd()">Solo registrar</button><button class="btn secondary" onclick="navTo(\'timeline\')">Ver registros</button></div>':'');
+ return atlasBChartSwitch() + base;
 }
 function atlasBLibrary(){
  const counts=areaCounts();return headings('CATEGORÍAS DESCRIPTIVAS','Áreas de vida','Estas cifras solo cuentan entradas ficticias por categoría, sin evaluar bienestar.')+
@@ -128,12 +128,14 @@ function atlasBRender(){
  apoyo:professional,conexiones:connections,planes:plans,privacidad:privacy};
  const panel=document.getElementById('page');
  panel.innerHTML=(mapRender[current]||atlasBHome)();
+ panel.querySelectorAll('.graph-grid').forEach(g=>g.style.display=atlasB.showCharts?'':'none');
  panel.classList.remove('app-enter');
  void panel.offsetWidth;panel.classList.add('app-enter');
  const mic=document.getElementById('floatingMic');if(mic)mic.style.display=current==='inicio'?'none':'block';
  document.querySelectorAll('[data-page]').forEach(x=>{x.classList.toggle('active',x.dataset.page===current);x.setAttribute('aria-current',x.dataset.page===current?'page':'false')});
 }
 showEvent=atlasBModal;
+/* Restore list mode if its selected node has been hidden. */
 render=atlasBRender;
 sendQuestion=atlasBAsk;
 atlasBRender();
