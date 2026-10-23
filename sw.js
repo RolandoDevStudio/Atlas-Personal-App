@@ -1,6 +1,6 @@
 /* Versioned demo-only shell cache. Never cache user-generated POSTs or external requests. */
-const CACHE_NAME='atlas-personal-v0.6-sprint-c';
-const ASSETS=['./','./index.html','./atlas-icon.svg','./manifest.webmanifest','./sprint-b.js','./sprint-b.css','./sprint-c.js','./sprint-c.css'];
+const CACHE_NAME='atlas-personal-v0.6.1-intro-ux';
+const ASSETS=['./','./index.html','./atlas-icon.svg','./manifest.webmanifest','./sprint-b.js','./sprint-b.css','./sprint-c.js','./sprint-c.css','./onboarding-intro.js','./onboarding-intro.css'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('atlas-personal-')&&key!==CACHE_NAME).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{
